@@ -1,0 +1,15 @@
+{
+  "originHash" : "77be4327620ec80a9d3409c45fd6d7a01dfe5d9d3fa359355a829ad6e2410535",
+  "pins" : [
+    {
+      "identity" : "tmdb",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/adamayoung/TMDb",
+      "state" : {
+        "revision" : "6049b86f2d28abd35a114e962db5a41b5c2fb027",
+        "version" : "11.1.0"
+      }
+    }
+  ],
+  "version" : 3
+}

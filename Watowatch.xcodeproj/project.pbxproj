@@ -7,16 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C7152232BA437D40071B5BA /* Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7152222BA437D40071B5BA /* Presentation.swift */; };
+		8C7152262BA438920071B5BA /* PresentationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7152252BA438920071B5BA /* PresentationData.swift */; };
+		8C7152282BA43DE40071B5BA /* PresentationCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7152272BA43DE40071B5BA /* PresentationCardView.swift */; };
+		8C71522A2BA440770071B5BA /* StartButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7152292BA440770071B5BA /* StartButtonView.swift */; };
+		8C71522D2BA4428F0071B5BA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C71522C2BA4428F0071B5BA /* ContentView.swift */; };
+		8C7152302BA4774A0071B5BA /* TMDb in Frameworks */ = {isa = PBXBuildFile; productRef = 8C71522F2BA4774A0071B5BA /* TMDb */; };
+		8C7152342BA4781A0071B5BA /* environment.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C7152332BA4781A0071B5BA /* environment.plist */; };
+		8C7152362BA479A70071B5BA /* PListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7152352BA479A70071B5BA /* PListManager.swift */; };
 		8C98CA7E2BA20F7700D55DC5 /* WatowatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C98CA7D2BA20F7700D55DC5 /* WatowatchApp.swift */; };
-		8C98CA802BA20F7700D55DC5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C98CA7F2BA20F7700D55DC5 /* ContentView.swift */; };
+		8C98CA802BA20F7700D55DC5 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C98CA7F2BA20F7700D55DC5 /* OnboardingView.swift */; };
 		8C98CA822BA20F7900D55DC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C98CA812BA20F7900D55DC5 /* Assets.xcassets */; };
 		8C98CA852BA20F7900D55DC5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C98CA842BA20F7900D55DC5 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8C7152222BA437D40071B5BA /* Presentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presentation.swift; sourceTree = "<group>"; };
+		8C7152252BA438920071B5BA /* PresentationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationData.swift; sourceTree = "<group>"; };
+		8C7152272BA43DE40071B5BA /* PresentationCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationCardView.swift; sourceTree = "<group>"; };
+		8C7152292BA440770071B5BA /* StartButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartButtonView.swift; sourceTree = "<group>"; };
+		8C71522C2BA4428F0071B5BA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8C7152332BA4781A0071B5BA /* environment.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = environment.plist; sourceTree = "<group>"; };
+		8C7152352BA479A70071B5BA /* PListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PListManager.swift; sourceTree = "<group>"; };
 		8C98CA7A2BA20F7700D55DC5 /* Watowatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watowatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C98CA7D2BA20F7700D55DC5 /* WatowatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatowatchApp.swift; sourceTree = "<group>"; };
-		8C98CA7F2BA20F7700D55DC5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8C98CA7F2BA20F7700D55DC5 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		8C98CA812BA20F7900D55DC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8C98CA842BA20F7900D55DC5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -26,12 +41,55 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C7152302BA4774A0071B5BA /* TMDb in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C71521D2BA433800071B5BA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8C7152222BA437D40071B5BA /* Presentation.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8C71521E2BA4338A0071B5BA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8C71522B2BA4407D0071B5BA /* Onboarding */,
+				8C71522C2BA4428F0071B5BA /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8C71521F2BA433A30071B5BA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		8C7152242BA438880071B5BA /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				8C7152252BA438920071B5BA /* PresentationData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		8C71522B2BA4407D0071B5BA /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				8C98CA7F2BA20F7700D55DC5 /* OnboardingView.swift */,
+				8C7152272BA43DE40071B5BA /* PresentationCardView.swift */,
+				8C7152292BA440770071B5BA /* StartButtonView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		8C98CA712BA20F7700D55DC5 = {
 			isa = PBXGroup;
 			children = (
@@ -51,10 +109,15 @@
 		8C98CA7C2BA20F7700D55DC5 /* Watowatch */ = {
 			isa = PBXGroup;
 			children = (
+				8C7152242BA438880071B5BA /* Data */,
+				8C71521F2BA433A30071B5BA /* Services */,
+				8C71521E2BA4338A0071B5BA /* Views */,
+				8C71521D2BA433800071B5BA /* Models */,
 				8C98CA7D2BA20F7700D55DC5 /* WatowatchApp.swift */,
-				8C98CA7F2BA20F7700D55DC5 /* ContentView.swift */,
 				8C98CA812BA20F7900D55DC5 /* Assets.xcassets */,
 				8C98CA832BA20F7900D55DC5 /* Preview Content */,
+				8C7152352BA479A70071B5BA /* PListManager.swift */,
+				8C7152332BA4781A0071B5BA /* environment.plist */,
 			);
 			path = Watowatch;
 			sourceTree = "<group>";
@@ -83,6 +146,9 @@
 			dependencies = (
 			);
 			name = Watowatch;
+			packageProductDependencies = (
+				8C71522F2BA4774A0071B5BA /* TMDb */,
+			);
 			productName = Watowatch;
 			productReference = 8C98CA7A2BA20F7700D55DC5 /* Watowatch.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +177,9 @@
 				Base,
 			);
 			mainGroup = 8C98CA712BA20F7700D55DC5;
+			packageReferences = (
+				8C71522E2BA4774A0071B5BA /* XCRemoteSwiftPackageReference "TMDb" */,
+			);
 			productRefGroup = 8C98CA7B2BA20F7700D55DC5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,6 +196,7 @@
 			files = (
 				8C98CA852BA20F7900D55DC5 /* Preview Assets.xcassets in Resources */,
 				8C98CA822BA20F7900D55DC5 /* Assets.xcassets in Resources */,
+				8C7152342BA4781A0071B5BA /* environment.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,8 +207,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C98CA802BA20F7700D55DC5 /* ContentView.swift in Sources */,
+				8C98CA802BA20F7700D55DC5 /* OnboardingView.swift in Sources */,
+				8C7152232BA437D40071B5BA /* Presentation.swift in Sources */,
+				8C71522D2BA4428F0071B5BA /* ContentView.swift in Sources */,
+				8C7152282BA43DE40071B5BA /* PresentationCardView.swift in Sources */,
+				8C7152362BA479A70071B5BA /* PListManager.swift in Sources */,
+				8C71522A2BA440770071B5BA /* StartButtonView.swift in Sources */,
 				8C98CA7E2BA20F7700D55DC5 /* WatowatchApp.swift in Sources */,
+				8C7152262BA438920071B5BA /* PresentationData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +420,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8C71522E2BA4774A0071B5BA /* XCRemoteSwiftPackageReference "TMDb" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/adamayoung/TMDb";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8C71522F2BA4774A0071B5BA /* TMDb */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8C71522E2BA4774A0071B5BA /* XCRemoteSwiftPackageReference "TMDb" */;
+			productName = TMDb;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8C98CA722BA20F7700D55DC5 /* Project object */;
 }

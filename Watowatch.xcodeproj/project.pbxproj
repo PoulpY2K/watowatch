@@ -20,14 +20,19 @@
 		8C7152282BA43DE40071B5BA /* PresentationCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7152272BA43DE40071B5BA /* PresentationCardView.swift */; };
 		8C71522A2BA440770071B5BA /* StartButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7152292BA440770071B5BA /* StartButtonView.swift */; };
 		8C71522D2BA4428F0071B5BA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C71522C2BA4428F0071B5BA /* ContentView.swift */; };
-		8C7152302BA4774A0071B5BA /* TMDb in Frameworks */ = {isa = PBXBuildFile; productRef = 8C71522F2BA4774A0071B5BA /* TMDb */; };
 		8C7152342BA4781A0071B5BA /* environment.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C7152332BA4781A0071B5BA /* environment.plist */; };
 		8C7152362BA479A70071B5BA /* PListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7152352BA479A70071B5BA /* PListManager.swift */; };
+		8C817E382BBAB3310046FBB4 /* TMDBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C817E372BBAB3310046FBB4 /* TMDBService.swift */; };
+		8C817E3A2BBABA460046FBB4 /* PageableListResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C817E392BBABA460046FBB4 /* PageableListResult.swift */; };
+		8C817E3C2BBABAF80046FBB4 /* MoviePageableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C817E3B2BBABAF80046FBB4 /* MoviePageableList.swift */; };
+		8C817E3E2BBABBCE0046FBB4 /* VideoCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C817E3D2BBABBCE0046FBB4 /* VideoCollection.swift */; };
+		8C817E402BBABBEB0046FBB4 /* VideoMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C817E3F2BBABBEB0046FBB4 /* VideoMetadata.swift */; };
+		8C817E422BBAC46B0046FBB4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C817E412BBAC46B0046FBB4 /* Constants.swift */; };
+		8C817E442BBACAC90046FBB4 /* FeedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C817E432BBACAC90046FBB4 /* FeedState.swift */; };
 		8C98CA7E2BA20F7700D55DC5 /* WatowatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C98CA7D2BA20F7700D55DC5 /* WatowatchApp.swift */; };
 		8C98CA802BA20F7700D55DC5 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C98CA7F2BA20F7700D55DC5 /* OnboardingView.swift */; };
 		8C98CA822BA20F7900D55DC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C98CA812BA20F7900D55DC5 /* Assets.xcassets */; };
 		8C98CA852BA20F7900D55DC5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C98CA842BA20F7900D55DC5 /* Preview Assets.xcassets */; };
-		8C9ED8FA2BA49C72000CEE6A /* MovieList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9ED8F92BA49C72000CEE6A /* MovieList.swift */; };
 		8CCD14042BA5ADD50097FAA0 /* ListDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCD14032BA5ADD50097FAA0 /* ListDetailView.swift */; };
 		8CCD14072BA5AF390097FAA0 /* DetailSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCD14062BA5AF390097FAA0 /* DetailSheetView.swift */; };
 /* End PBXBuildFile section */
@@ -48,12 +53,18 @@
 		8C71522C2BA4428F0071B5BA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8C7152332BA4781A0071B5BA /* environment.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = environment.plist; sourceTree = "<group>"; };
 		8C7152352BA479A70071B5BA /* PListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PListManager.swift; sourceTree = "<group>"; };
+		8C817E372BBAB3310046FBB4 /* TMDBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBService.swift; sourceTree = "<group>"; };
+		8C817E392BBABA460046FBB4 /* PageableListResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageableListResult.swift; sourceTree = "<group>"; };
+		8C817E3B2BBABAF80046FBB4 /* MoviePageableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePageableList.swift; sourceTree = "<group>"; };
+		8C817E3D2BBABBCE0046FBB4 /* VideoCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCollection.swift; sourceTree = "<group>"; };
+		8C817E3F2BBABBEB0046FBB4 /* VideoMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoMetadata.swift; sourceTree = "<group>"; };
+		8C817E412BBAC46B0046FBB4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8C817E432BBACAC90046FBB4 /* FeedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedState.swift; sourceTree = "<group>"; };
 		8C98CA7A2BA20F7700D55DC5 /* Watowatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Watowatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C98CA7D2BA20F7700D55DC5 /* WatowatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatowatchApp.swift; sourceTree = "<group>"; };
 		8C98CA7F2BA20F7700D55DC5 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		8C98CA812BA20F7900D55DC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8C98CA842BA20F7900D55DC5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		8C9ED8F92BA49C72000CEE6A /* MovieList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieList.swift; sourceTree = "<group>"; };
 		8CCD14032BA5ADD50097FAA0 /* ListDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailView.swift; sourceTree = "<group>"; };
 		8CCD14062BA5AF390097FAA0 /* DetailSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSheetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,7 +74,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C7152302BA4774A0071B5BA /* TMDb in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +92,10 @@
 				8C5570442BA49579002F612A /* Company.swift */,
 				8C5570462BA49589002F612A /* Country.swift */,
 				8C5570482BA495A3002F612A /* SpokenLanguage.swift */,
-				8C9ED8F92BA49C72000CEE6A /* MovieList.swift */,
+				8C817E392BBABA460046FBB4 /* PageableListResult.swift */,
+				8C817E3B2BBABAF80046FBB4 /* MoviePageableList.swift */,
+				8C817E3D2BBABBCE0046FBB4 /* VideoCollection.swift */,
+				8C817E3F2BBABBEB0046FBB4 /* VideoMetadata.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -94,6 +107,7 @@
 				8CCD14022BA5ADCB0097FAA0 /* ListDetail */,
 				8C71522B2BA4407D0071B5BA /* Onboarding */,
 				8C71522C2BA4428F0071B5BA /* ContentView.swift */,
+				8C817E432BBACAC90046FBB4 /* FeedState.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -101,6 +115,7 @@
 		8C71521F2BA433A30071B5BA /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				8C817E372BBAB3310046FBB4 /* TMDBService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -151,6 +166,7 @@
 				8C98CA832BA20F7900D55DC5 /* Preview Content */,
 				8C7152352BA479A70071B5BA /* PListManager.swift */,
 				8C7152332BA4781A0071B5BA /* environment.plist */,
+				8C817E412BBAC46B0046FBB4 /* Constants.swift */,
 			);
 			path = Watowatch;
 			sourceTree = "<group>";
@@ -196,7 +212,6 @@
 			);
 			name = Watowatch;
 			packageProductDependencies = (
-				8C71522F2BA4774A0071B5BA /* TMDb */,
 			);
 			productName = Watowatch;
 			productReference = 8C98CA7A2BA20F7700D55DC5 /* Watowatch.app */;
@@ -227,7 +242,6 @@
 			);
 			mainGroup = 8C98CA712BA20F7700D55DC5;
 			packageReferences = (
-				8C71522E2BA4774A0071B5BA /* XCRemoteSwiftPackageReference "TMDb" */,
 			);
 			productRefGroup = 8C98CA7B2BA20F7700D55DC5 /* Products */;
 			projectDirPath = "";
@@ -260,21 +274,27 @@
 				8C5570432BA4955E002F612A /* ProductionCountry.swift in Sources */,
 				8C7152232BA437D40071B5BA /* Presentation.swift in Sources */,
 				8C5570492BA495A3002F612A /* SpokenLanguage.swift in Sources */,
-				8C9ED8FA2BA49C72000CEE6A /* MovieList.swift in Sources */,
 				8C55703B2BA494D8002F612A /* Movie.swift in Sources */,
 				8C71522D2BA4428F0071B5BA /* ContentView.swift in Sources */,
+				8C817E3A2BBABA460046FBB4 /* PageableListResult.swift in Sources */,
 				8C55703F2BA49520002F612A /* Status.swift in Sources */,
 				8C7152282BA43DE40071B5BA /* PresentationCardView.swift in Sources */,
+				8C817E402BBABBEB0046FBB4 /* VideoMetadata.swift in Sources */,
 				8C7152362BA479A70071B5BA /* PListManager.swift in Sources */,
 				8C71522A2BA440770071B5BA /* StartButtonView.swift in Sources */,
+				8C817E3E2BBABBCE0046FBB4 /* VideoCollection.swift in Sources */,
 				8CCD14072BA5AF390097FAA0 /* DetailSheetView.swift in Sources */,
 				8C5570412BA49535002F612A /* ProductionCompany.swift in Sources */,
+				8C817E442BBACAC90046FBB4 /* FeedState.swift in Sources */,
 				8C98CA7E2BA20F7700D55DC5 /* WatowatchApp.swift in Sources */,
+				8C817E382BBAB3310046FBB4 /* TMDBService.swift in Sources */,
 				8C5570452BA49579002F612A /* Company.swift in Sources */,
 				8C7152262BA438920071B5BA /* PresentationData.swift in Sources */,
 				8CCD14042BA5ADD50097FAA0 /* ListDetailView.swift in Sources */,
+				8C817E3C2BBABAF80046FBB4 /* MoviePageableList.swift in Sources */,
 				8C5570472BA49589002F612A /* Country.swift in Sources */,
 				8C55703D2BA494FA002F612A /* Genre.swift in Sources */,
+				8C817E422BBAC46B0046FBB4 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,25 +500,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		8C71522E2BA4774A0071B5BA /* XCRemoteSwiftPackageReference "TMDb" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/adamayoung/TMDb";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 11.1.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		8C71522F2BA4774A0071B5BA /* TMDb */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8C71522E2BA4774A0071B5BA /* XCRemoteSwiftPackageReference "TMDb" */;
-			productName = TMDb;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8C98CA722BA20F7700D55DC5 /* Project object */;
 }

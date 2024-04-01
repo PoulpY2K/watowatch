@@ -14,6 +14,7 @@ struct HomepageView: View {
     let movies: [String] = ["Film 1", "Film 2", "Film 3"]
     let filters: [String] = ["Films", "Séries", "Animes"]
     
+    @StateObject var feedState = FeedState()
     @State var carouselHeight: CGFloat = 0
     @State var selectedFilters: [String] = []
     

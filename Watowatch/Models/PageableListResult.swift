@@ -53,4 +53,10 @@ public struct PageableListResult<Result: Codable & Identifiable & Equatable & Ha
         self.totalPages = totalPages
     }
 
+    public enum CodingKeys: String, CodingKey {
+        case page = "page"
+        case results = "results"
+        case totalResults = "total_results"
+        case totalPages = "total_pages"
+    }
 }

@@ -17,13 +17,13 @@ class FeedState: ObservableObject {
                 // Créez une requête avec cette URL
                 if let url = TMDBService().feedDiscoverMovieUrl(includeAdult: "true", includeVideo: "true") {
                     let request = URLRequest(url: url)
-                                        
+                                                                                                        
                     // Faites l'appel réseau
                     let (data, _) = try await URLSession.shared.data(for: request)
-                    
+                                        
                     // Transformez les données en JSON
-                    let deserializedData = try JSONDecoder().decode([Movie].self, from: data)
-                    
+                    let deserializedData = try JSONDecoder().decode(MoviePageableList.self, from: data).results
+                                        
                     // Mettez à jour l'état de la vue
                     homeFeed = deserializedData
                 }

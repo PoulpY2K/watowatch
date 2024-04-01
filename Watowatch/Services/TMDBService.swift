@@ -8,23 +8,21 @@
 import Foundation
 
 class TMDBService {
-    let baseUrl: String = "https://api.themoviedb.org/3"
+    let baseUrl: String = "https://api.themoviedb.org"
     let scheme: String = "https"
-    let host: String = "api.themoviedb.org/3"
+    let host: String = "api.themoviedb.org"
     let apiKeyQueryParam: String = "api_key"
     
-    let moviePath: String = "/movie"
-    let genrePath: String = "/genre"
-    let discoverPath: String = "/discover"
+    let moviePath: String = "/3/movie"
+    let genrePath: String = "/3/genre"
+    let discoverPath: String = "/3/discover"
     
     /// Permet de construire l'URL de base de TMDB
     func tmdbApiBaseUrl() -> URLComponents {
         var components = URLComponents()
-        let apiKeyQueryItem = URLQueryItem(name: apiKeyQueryParam, value: ConfigurationManager.instance.plistDictionnary.apiKey)
         
         components.scheme = scheme
         components.host = host
-        components.queryItems = [apiKeyQueryItem]
         
         return components
     }
@@ -32,16 +30,19 @@ class TMDBService {
     /// Permet de découvrir des films avec une variété de filtres
     func feedDiscoverMovieUrl(language: String = "fr-FR", sortBy: String? = "popularity.desc", withGenresId: String? = nil, includeAdult: String? = "false", includeVideo: String? = "false") -> URL? {
         var components = tmdbApiBaseUrl()
-        components.path += discoverPath + moviePath
+        components.path += "\(discoverPath)/movie"
         
         let languageQueryItem = URLQueryItem(name: "language", value: language)
         let sortByQueryItem = URLQueryItem(name: "sort_by", value: sortBy)
         let includeAdultQueryItem = URLQueryItem(name: "include_adult", value: includeAdult)
         let includeVideoQueryItem = URLQueryItem(name: "include_video", value: includeVideo)
-        let genresIdQueryItem = URLQueryItem(name: "with_genres", value: withGenresId ?? "")
         
-        if components.queryItems != nil {
-            components.queryItems! += [languageQueryItem, sortByQueryItem, includeAdultQueryItem, includeVideoQueryItem]
+        let apiKeyQueryItem = URLQueryItem(name: apiKeyQueryParam, value: ConfigurationManager.instance.plistDictionnary.apiKey)
+
+        components.queryItems = [languageQueryItem, sortByQueryItem, includeAdultQueryItem, includeVideoQueryItem, apiKeyQueryItem]
+
+        if withGenresId != nil {
+            components.queryItems! += [URLQueryItem(name: "with_genres", value: withGenresId ?? "")]
         }
         
         return components.url

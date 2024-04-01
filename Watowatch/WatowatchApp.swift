@@ -17,7 +17,7 @@ struct WatowatchApp: App {
             if isOnboarding {
                 OnboardingView()
             } else {
-                ContentView()
+                HomepageView()
             }
         }
     }

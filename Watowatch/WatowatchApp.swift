@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import TMDb
+import SwiftData
 
 @main
 struct WatowatchApp: App {
@@ -19,6 +19,6 @@ struct WatowatchApp: App {
             } else {
                 HomepageView()
             }
-        }
+        }.modelContainer(for: UserList.self)
     }
 }

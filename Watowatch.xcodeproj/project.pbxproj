@@ -37,6 +37,10 @@
 		8C98CA802BA20F7700D55DC5 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C98CA7F2BA20F7700D55DC5 /* OnboardingView.swift */; };
 		8C98CA822BA20F7900D55DC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C98CA812BA20F7900D55DC5 /* Assets.xcassets */; };
 		8C98CA852BA20F7900D55DC5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C98CA842BA20F7900D55DC5 /* Preview Assets.xcassets */; };
+		8CAB7A742BBB1E6C00F2E0B9 /* UserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAB7A732BBB1E6C00F2E0B9 /* UserList.swift */; };
+		8CAB7A762BBB215000F2E0B9 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAB7A752BBB215000F2E0B9 /* ListView.swift */; };
+		8CAB7A782BBB243000F2E0B9 /* SampleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAB7A772BBB243000F2E0B9 /* SampleList.swift */; };
+		8CAB7A7A2BBB24B100F2E0B9 /* PreviewSampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAB7A792BBB24B100F2E0B9 /* PreviewSampleData.swift */; };
 		8CCD14042BA5ADD50097FAA0 /* ListDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCD14032BA5ADD50097FAA0 /* ListDetailView.swift */; };
 		8CCD14072BA5AF390097FAA0 /* DetailSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCD14062BA5AF390097FAA0 /* DetailSheetView.swift */; };
 /* End PBXBuildFile section */
@@ -73,6 +77,10 @@
 		8C98CA7F2BA20F7700D55DC5 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		8C98CA812BA20F7900D55DC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8C98CA842BA20F7900D55DC5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8CAB7A732BBB1E6C00F2E0B9 /* UserList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserList.swift; sourceTree = "<group>"; };
+		8CAB7A752BBB215000F2E0B9 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		8CAB7A772BBB243000F2E0B9 /* SampleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleList.swift; sourceTree = "<group>"; };
+		8CAB7A792BBB24B100F2E0B9 /* PreviewSampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewSampleData.swift; sourceTree = "<group>"; };
 		8CCD14032BA5ADD50097FAA0 /* ListDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailView.swift; sourceTree = "<group>"; };
 		8CCD14062BA5AF390097FAA0 /* DetailSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSheetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,6 +124,7 @@
 				8C817E3D2BBABBCE0046FBB4 /* VideoCollection.swift */,
 				8C817E3F2BBABBEB0046FBB4 /* VideoMetadata.swift */,
 				6F31F4F22BBAF1E8007D2D82 /* MotionManager.swift */,
+				8CAB7A732BBB1E6C00F2E0B9 /* UserList.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -128,6 +137,7 @@
 				8CCD14022BA5ADCB0097FAA0 /* ListDetail */,
 				8C71522B2BA4407D0071B5BA /* Onboarding */,
 				8C817E432BBACAC90046FBB4 /* FeedState.swift */,
+				8CAB7A792BBB24B100F2E0B9 /* PreviewSampleData.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -144,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				8C7152252BA438920071B5BA /* PresentationData.swift */,
+				8CAB7A772BBB243000F2E0B9 /* SampleList.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -203,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				8CCD14032BA5ADD50097FAA0 /* ListDetailView.swift */,
+				8CAB7A752BBB215000F2E0B9 /* ListView.swift */,
 			);
 			path = ListDetail;
 			sourceTree = "<group>";
@@ -299,14 +311,18 @@
 				6F31F4E92BBAEB2E007D2D82 /* SelectButton.swift in Sources */,
 				8C817E3A2BBABA460046FBB4 /* PageableListResult.swift in Sources */,
 				8C55703F2BA49520002F612A /* Status.swift in Sources */,
+				8CAB7A782BBB243000F2E0B9 /* SampleList.swift in Sources */,
 				8C7152282BA43DE40071B5BA /* PresentationCardView.swift in Sources */,
+				8CAB7A742BBB1E6C00F2E0B9 /* UserList.swift in Sources */,
 				8C817E402BBABBEB0046FBB4 /* VideoMetadata.swift in Sources */,
 				6F31F4EE2BBAEB71007D2D82 /* MovieCard.swift in Sources */,
 				8C7152362BA479A70071B5BA /* PListManager.swift in Sources */,
 				8C71522A2BA440770071B5BA /* StartButtonView.swift in Sources */,
 				8C817E3E2BBABBCE0046FBB4 /* VideoCollection.swift in Sources */,
 				8CCD14072BA5AF390097FAA0 /* DetailSheetView.swift in Sources */,
+				8CAB7A762BBB215000F2E0B9 /* ListView.swift in Sources */,
 				8C5570412BA49535002F612A /* ProductionCompany.swift in Sources */,
+				8CAB7A7A2BBB24B100F2E0B9 /* PreviewSampleData.swift in Sources */,
 				8C817E442BBACAC90046FBB4 /* FeedState.swift in Sources */,
 				6F31F4E72BBAEB2E007D2D82 /* HomepageView.swift in Sources */,
 				8C98CA7E2BA20F7700D55DC5 /* WatowatchApp.swift in Sources */,
@@ -452,7 +468,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Watowatch/Preview Content\"";
-				DEVELOPMENT_TEAM = Z4Y32Z4AB2;
+				DEVELOPMENT_TEAM = 6UJQF34MZK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -481,7 +497,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Watowatch/Preview Content\"";
-				DEVELOPMENT_TEAM = Z4Y32Z4AB2;
+				DEVELOPMENT_TEAM = 6UJQF34MZK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

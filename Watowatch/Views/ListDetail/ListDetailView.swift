@@ -5,11 +5,12 @@
 //  Created by Jérémy Laurent on 16/03/2024.
 //
 
-import Foundation
 import SwiftUI
+import SwiftData
 
 struct ListDetailView: View {
     // MARK: - PROPERTIES
+    @Bindable var list: UserList
 
     // MARK: - BODY
     var body: some View {
@@ -20,5 +21,5 @@ struct ListDetailView: View {
 }
 
 #Preview {
-    ListDetailView()
+    ListDetailView(list: UserList(name: "Action", movies: [Movie(id: 3, title: "Le Château Déambulant")], thumbnailURL: "url"))
 }

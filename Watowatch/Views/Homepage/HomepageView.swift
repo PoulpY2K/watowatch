@@ -21,11 +21,13 @@ struct HomepageView: View {
     var body: some View {
         VStack {
             HStack () {
-                Button (action: {}, label: {
+                NavigationLink {
+                    ListView()
+                } label: {
                     Image(systemName: "person.crop.circle")
                         .imageScale(.large)
                         .foregroundColor(.black)
-                })
+                }
                 Spacer()
                 Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
                     Image(systemName: "magnifyingglass.circle")
@@ -74,23 +76,38 @@ struct HomepageView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     ScrollView(.horizontal) {
                         HStack {
-                            ForEach(movies, id: \.self) { movie in
-                                Button(action: {}, label: {
-                                    ZStack {
-                                        Rectangle()
-                                            .frame(width: 100, height: 100)
-                                            .cornerRadius(10)
-                                        Text(movie).foregroundColor(.white)
-                                    }
-                                })
+                            if(feedState.homeFeed != nil) {
+                                ForEach(feedState.homeFeed!, id: \.id) { movie in
+                                    Button(action: {}, label: {
+                                        ZStack {
+                                            AsyncImage(url: URL(string: feedState.imageBaseUrl + (movie.backdropPath?.absoluteString ?? ""))) { image in
+                                                image
+                                                    .resizable()
+                                                    .aspectRatio(contentMode: .fill)
+                                                    .frame(width: 100, height: 100)
+                                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                            } placeholder: {
+                                                RoundedRectangle(cornerRadius: 10)
+                                                    .frame(width: 100, height: 100)
+                                            }
+                                            
+                                            Text(movie.title).foregroundColor(.white).frame(width: 100, height: 100).fixedSize(horizontal: true, vertical: false).bold()
+                                        }
+                                    })
+                                }
                             }
                         }
                     }.scrollIndicators(.hidden)
                     
                 }.scrollIndicators(.hidden)
             }
-        }.padding(.horizontal, 20)
-        
+        }
+        .padding(.horizontal, 20)
+        .onAppear() {
+            Task {
+                await feedState.fetchHomeFeed()
+            }
+        }
     }
 }
 

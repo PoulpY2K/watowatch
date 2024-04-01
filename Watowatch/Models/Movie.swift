@@ -231,8 +231,8 @@ extension Movie {
         case runtime
         case genres
         case releaseDate
-        case posterPath
-        case backdropPath
+        case posterPath = "poster_path"
+        case backdropPath = "backdrop_path"
         case budget
         case revenue
         case homepageURL = "homepage"
@@ -247,55 +247,4 @@ extension Movie {
         case hasVideo = "video"
         case isAdultOnly = "adult"
     }
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        let container2 = try decoder.container(keyedBy: CodingKeys.self)
-
-        self.id = try container.decode(Int.self, forKey: .id)
-        self.title = try container.decode(String.self, forKey: .title)
-        self.tagline = try container.decodeIfPresent(String.self, forKey: .tagline)
-        self.originalTitle = try container.decodeIfPresent(String.self, forKey: .originalTitle)
-        self.originalLanguage = try container.decodeIfPresent(String.self, forKey: .originalLanguage)
-        self.overview = try container.decodeIfPresent(String.self, forKey: .overview)
-        self.runtime = try container.decodeIfPresent(Int.self, forKey: .runtime)
-        self.genres = try container.decodeIfPresent([Genre].self, forKey: .genres)
-
-        // Need to deal with empty strings - date decoding will fail with an empty string
-        let releaseDateString = try container.decodeIfPresent(String.self, forKey: .releaseDate)
-        self.releaseDate = try {
-            guard let releaseDateString, !releaseDateString.isEmpty else {
-                return nil
-            }
-
-            return try container2.decodeIfPresent(Date.self, forKey: .releaseDate)
-        }()
-
-        self.posterPath = try container.decodeIfPresent(URL.self, forKey: .posterPath)
-        self.backdropPath = try container.decodeIfPresent(URL.self, forKey: .backdropPath)
-        self.budget = try container.decodeIfPresent(Double.self, forKey: .budget)
-        self.revenue = try container.decodeIfPresent(Double.self, forKey: .revenue)
-
-        // Need to deal with empty strings - URL decoding will fail with an empty string
-        let homepageURLString = try container.decodeIfPresent(String.self, forKey: .homepageURL)
-        self.homepageURL = try {
-            guard let homepageURLString, !homepageURLString.isEmpty else {
-                return nil
-            }
-
-            return try container2.decodeIfPresent(URL.self, forKey: .homepageURL)
-        }()
-
-        self.imdbID = try container.decodeIfPresent(String.self, forKey: .imdbID)
-        self.status = try container.decodeIfPresent(Status.self, forKey: .status)
-        self.productionCompanies = try container.decodeIfPresent([ProductionCompany].self, forKey: .productionCompanies)
-        self.productionCountries = try container.decodeIfPresent([ProductionCountry].self, forKey: .productionCountries)
-        self.spokenLanguages = try container.decodeIfPresent([SpokenLanguage].self, forKey: .spokenLanguages)
-        self.popularity = try container.decodeIfPresent(Double.self, forKey: .popularity)
-        self.voteAverage = try container.decodeIfPresent(Double.self, forKey: .voteAverage)
-        self.voteCount = try container.decodeIfPresent(Int.self, forKey: .voteCount)
-        self.hasVideo = try container.decodeIfPresent(Bool.self, forKey: .hasVideo)
-        self.isAdultOnly = try container.decodeIfPresent(Bool.self, forKey: .isAdultOnly)
-    }
-
 }

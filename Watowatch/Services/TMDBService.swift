@@ -25,6 +25,7 @@ class TMDBService {
         
         components.scheme = scheme
         components.host = host
+        components.queryItems = [URLQueryItem(name: apiKeyQueryParam, value: ConfigurationManager.instance.plistDictionnary.apiKey)]
         
         return components
     }
@@ -39,7 +40,7 @@ class TMDBService {
     }
     
     /// Permet de découvrir des films avec une variété de filtres
-    func feedDiscoverMovieUrl(language: String = "fr-FR", sortBy: String? = "popularity.desc", withGenresId: String? = nil, includeAdult: String? = "false", includeVideo: String? = "false") -> URL? {
+    func feedDiscoverUrl(language: String = "fr-FR", sortBy: String? = "popularity.desc", withGenresId: String? = nil, includeAdult: String? = "false", includeVideo: String? = "false") -> URL? {
         var components = tmdbApiBaseUrl()
         components.path += "\(discoverPath)/movie"
         
@@ -48,9 +49,7 @@ class TMDBService {
         let includeAdultQueryItem = URLQueryItem(name: "include_adult", value: includeAdult)
         let includeVideoQueryItem = URLQueryItem(name: "include_video", value: includeVideo)
         
-        let apiKeyQueryItem = URLQueryItem(name: apiKeyQueryParam, value: ConfigurationManager.instance.plistDictionnary.apiKey)
-
-        components.queryItems = [languageQueryItem, sortByQueryItem, includeAdultQueryItem, includeVideoQueryItem, apiKeyQueryItem]
+        components.queryItems! += [languageQueryItem, sortByQueryItem, includeAdultQueryItem, includeVideoQueryItem]
 
         if withGenresId != nil {
             components.queryItems! += [URLQueryItem(name: "with_genres", value: withGenresId ?? "")]
@@ -62,6 +61,13 @@ class TMDBService {
     func getImageUrl(path: String) -> URL? {
         var components = tmdbImageBaseUrl()
         components.path += "\(imagePath)\(path)"
+        return components.url
+    }
+
+    func feedGenreUrl(language: String = "fr-FR") -> URL? {
+        var components = tmdbApiBaseUrl()
+        components.path += "\(genrePath)/movie/list"
+        components.queryItems! += [URLQueryItem(name: "language", value: language)]
         return components.url
     }
 }

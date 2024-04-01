@@ -28,14 +28,12 @@ struct MovieCardCarousel: View {
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fill)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
                     } placeholder: {
                         RoundedRectangle(cornerRadius: 20)
                             .fill(.gray)
                             .frame(width: width, height: height)
                     }
                     .frame(maxWidth: width, maxHeight: height)
-                    .cornerRadius(20)
                     .tag(cardIndex)
                 }
             }.tabViewStyle(PageTabViewStyle())

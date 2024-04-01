@@ -9,7 +9,6 @@ import Foundation
 
 class FeedState: ObservableObject {
     @Published var homeFeed: [Movie]?
-    public let imageBaseUrl: String = "https://image.tmdb.org/t/p/original"
 
     // Fetch home feed doit utiliser la fonction feedUrl de UnsplashAPI
     // Puis assigner le résultat de l'appel réseau à la variable homeFeed

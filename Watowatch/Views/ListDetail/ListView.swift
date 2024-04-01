@@ -10,27 +10,19 @@ import SwiftData
 
 struct ListView: View {
     // MARK: - PROPERTIES
-    @Query var userList: [UserList]
-    @Environment(\.modelContext) private var modelContext
+    @Query var movieList: [Movie]
     
     // MARK: - BODY
     var body: some View {
             VStack {
-                if (!userList.isEmpty) {
-                    List(userList) { list in
-                        NavigationLink(list.name, destination: ListDetailView(list: list))
+                if (!movieList.isEmpty) {
+                    List(movieList) { movie in
+                        Text(movie.title)
                     }
                 } else {
-                    Text("Aucune liste trouvée...")
+                    Text("Aucun film n'a été ajouté.")
                 }
             }
-        .navigationTitle("Listes")
-    }
-}
-
-#Preview {
-    MainActor.assumeIsolated {
-        ListView()
-            .modelContainer(PreviewSampleData.previewContainer)
+        .navigationTitle("Favoris")
     }
 }

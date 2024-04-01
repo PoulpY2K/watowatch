@@ -19,7 +19,3 @@ struct ListDetailView: View {
         }
     }
 }
-
-#Preview {
-    ListDetailView(list: UserList(name: "Action", movies: [Movie(id: 3, title: "Le Château Déambulant")], thumbnailURL: "url"))
-}

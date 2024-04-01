@@ -6,21 +6,24 @@
 //
 
 import Foundation
+import SwiftData
 
 ///
 /// A model representing a genre.
 ///
-public struct Genre: Identifiable, Codable, Equatable, Hashable {
+
+@Model
+final public class Genre: Identifiable, Codable, Equatable, Hashable {
 
     ///
     /// Genre Identifier.
     ///
-    public let id: Int
+    public var id: Int
 
     ///
     /// Genre name.
     ///
-    public let name: String
+    public var name: String
 
     ///
     /// Creates a genre object.
@@ -34,4 +37,22 @@ public struct Genre: Identifiable, Codable, Equatable, Hashable {
         self.name = name
     }
 
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case name
+    }
+    
+    required public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        self.id = try container.decode(Int.self, forKey: .id)
+        self.name = try container.decode(String.self, forKey: .name)
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = try encoder.container(keyedBy: CodingKeys.self)
+        
+        try container.encode(id, forKey: .id)
+        try container.encode(name, forKey: .name)
+    }
 }

@@ -11,8 +11,10 @@ class TMDBService {
     let baseUrl: String = "https://api.themoviedb.org"
     let scheme: String = "https"
     let host: String = "api.themoviedb.org"
+    let imageHost: String = "image.tmdb.org"
     let apiKeyQueryParam: String = "api_key"
     
+    let imagePath: String = "/t/p/original"
     let moviePath: String = "/3/movie"
     let genrePath: String = "/3/genre"
     let discoverPath: String = "/3/discover"
@@ -23,6 +25,15 @@ class TMDBService {
         
         components.scheme = scheme
         components.host = host
+        
+        return components
+    }
+    
+    func tmdbImageBaseUrl() -> URLComponents {
+        var components = URLComponents()
+        
+        components.scheme = scheme
+        components.host = imageHost
         
         return components
     }
@@ -45,6 +56,12 @@ class TMDBService {
             components.queryItems! += [URLQueryItem(name: "with_genres", value: withGenresId ?? "")]
         }
         
+        return components.url
+    }
+    
+    func getImageUrl(path: String) -> URL? {
+        var components = tmdbImageBaseUrl()
+        components.path += "\(imagePath)\(path)"
         return components.url
     }
 }

@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct HomepageView: View {
-    
+
     // @TODO: use proper data
     let cards : [MovieCard] = [MovieCard(), MovieCard(), MovieCard()]
     let movies: [String] = ["Film 1", "Film 2", "Film 3"]
     let filters: [String] = ["Films", "Séries", "Animes"]
-    
+
     @StateObject var feedState = FeedState()
     @State var carouselHeight: CGFloat = 0
     @State var selectedFilters: [String] = []
-    
+    @State var selectedMovie: Movie? = nil
+
     var body: some View {
         NavigationStack {
             VStack {
@@ -38,12 +39,12 @@ struct HomepageView: View {
                 }.padding(.bottom)
                 GeometryReader { reader in
                     ScrollView {
-                        
+
                         Text("Bonjour, XXX") // @TODO: use stored name
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.bottom, 20)
-                        
-                        
+
+
                         let width = reader.size.width
                         MovieCardCarousel(
                             cards: cards,
@@ -51,12 +52,12 @@ struct HomepageView: View {
                             width: width
                         ).frame(height: carouselHeight)
                             .cornerRadius(40)
-                        
+
                             .padding(.bottom, 16)
                             .onAppear() {
                                 carouselHeight = reader.size.width * 1.5
                             }
-                        
+
                         HStack {
                             ForEach(filters, id: \.self) { filter in
                                 let isSelected = selectedFilters.contains(filter)
@@ -71,17 +72,21 @@ struct HomepageView: View {
                             }
                         }.frame(maxWidth: 400)
                             .padding(.bottom)
-                        
-                        
+
+
                         Text("Action")
                             .frame(maxWidth: .infinity, alignment: .leading)
                         ScrollView(.horizontal) {
                             HStack {
                                 if(feedState.homeFeed != nil) {
                                     ForEach(feedState.homeFeed!, id: \.id) { movie in
-                                        Button(action: {}, label: {
+                                        Button(action: {
+                                            self.selectedMovie = movie
+                                        }) {
                                             ZStack {
-                                                AsyncImage(url: URL(string: feedState.imageBaseUrl + (movie.backdropPath?.absoluteString ?? ""))) { image in
+                                                AsyncImage(url:
+                                                            TMDBService().getImageUrl(path: movie.backdropPath?.absoluteString ?? "")
+                                                ) { image in
                                                     image
                                                         .resizable()
                                                         .aspectRatio(contentMode: .fill)
@@ -91,15 +96,18 @@ struct HomepageView: View {
                                                     RoundedRectangle(cornerRadius: 10)
                                                         .frame(width: 100, height: 100)
                                                 }
-                                                
+
                                                 Text(movie.title).foregroundColor(.white).frame(width: 100, height: 100).fixedSize(horizontal: true, vertical: false).bold()
                                             }
-                                        })
+                                        }
+                                        .sheet(item: self.$selectedMovie) {selectedMovie in
+                                            DetailSheetView(movie: selectedMovie)
+                                        }
                                     }
                                 }
                             }
                         }.scrollIndicators(.hidden)
-                        
+
                     }.scrollIndicators(.hidden)
                 }
             }

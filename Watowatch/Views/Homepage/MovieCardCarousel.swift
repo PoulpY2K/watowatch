@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import CoreMotion
 
 struct MovieCardCarousel: View {
-    
     @State private var currentIndex = 0
+    @StateObject private var motion = MotionManager()
     
     var cards: [MovieCard]
     var height: CGFloat
@@ -34,6 +35,11 @@ struct MovieCardCarousel: View {
                 .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
         }
         .frame(maxWidth: .infinity)
-        
+        .rotation3DEffect(
+            Angle(degrees: motion.y * 10), axis: /*@START_MENU_TOKEN@*/(x: 0.0, y: 1.0, z: 0.0)/*@END_MENU_TOKEN@*/
+        )
+        .rotation3DEffect(
+            Angle(degrees: motion.x * 10), axis: (x: 1.0, y: 0.0, z: 0.0)
+        )
     }
 }

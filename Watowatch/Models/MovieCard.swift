@@ -10,5 +10,5 @@ import SwiftUI
 struct MovieCard {
     let id = UUID()
     // @TODO: fill with proper data
-    let colors : [Color] = [.blue, .red, .pink, .purple, .orange, .yellow, .brown, .gray, .green]
+    let movie : Movie
 }

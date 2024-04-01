@@ -11,6 +11,7 @@ import CoreMotion
 struct MovieCardCarousel: View {
     @State private var currentIndex = 0
     @StateObject private var motion = MotionManager()
+    @StateObject var feedState = FeedState()
     
     var cards: [MovieCard]
     var height: CGFloat
@@ -23,13 +24,19 @@ struct MovieCardCarousel: View {
                 ForEach(0..<cards.count, id: \.self) { cardIndex in
                     let card = cards[cardIndex]
                     //  @TODO: Complete with proper data and actions
-                    VStack {
-                        Text("Card")
+                    AsyncImage(url: URL(string: feedState.imageBaseUrl + (card.movie.posterPath?.absoluteString ?? ""))) { image in
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                    } placeholder: {
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(.gray)
+                            .frame(width: width, height: height)
                     }
                     .frame(maxWidth: width, maxHeight: height)
                     .cornerRadius(20)
                     .tag(cardIndex)
-                    .background(card.colors.randomElement())
                 }
             }.tabViewStyle(PageTabViewStyle())
                 .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))

@@ -15,15 +15,22 @@ struct ListView: View {
     
     // MARK: - BODY
     var body: some View {
-        List(userList) { list in
-            NavigationLink(list.name, destination: ListDetailView(list: list))
-        }.modelContainer(PreviewSampleData.previewContainer)
+            VStack {
+                if (!userList.isEmpty) {
+                    List(userList) { list in
+                        NavigationLink(list.name, destination: ListDetailView(list: list))
+                    }
+                } else {
+                    Text("Aucune liste trouvée...")
+                }
+            }
+        .navigationTitle("Listes")
     }
 }
 
 #Preview {
     MainActor.assumeIsolated {
         ListView()
-                .modelContainer(PreviewSampleData.previewContainer)
-        }
+            .modelContainer(PreviewSampleData.previewContainer)
+    }
 }

@@ -10,16 +10,14 @@ import SwiftUI
 struct HomepageView: View {
     @StateObject var feedState = FeedState()
     @State var carouselHeight: CGFloat = 400
-    @State var selectedFilters: [String] = []
     @State var selectedMovie: Movie? = nil
-    @State var movies: [Movie] = []
     @State var seeMore: Bool = false
     
     var body: some View {
         VStack {
             HStack () {
                 NavigationLink {
-                    ListView()
+                    ListView().environmentObject(feedState)
                 } label: {
                     Image(systemName: "person.crop.circle")
                         .imageScale(.large)
@@ -40,6 +38,7 @@ struct HomepageView: View {
                 
                 if(feedState.homeFeed != nil) {
                     MovieCardCarousel(
+                        selectedMovie: $selectedMovie,
                         cards: feedState.homeFeed![0..<3].map {MovieCard(movie: $0)},
                         height: carouselHeight,
                         width: 250
@@ -52,15 +51,16 @@ struct HomepageView: View {
                         .padding(.bottom, 20)
                 }
                 
-                if feedState.genreFeed != nil {
-                    let limit = !seeMore ? 3 : feedState.genreFeed!.count
-                    ForEach(feedState.genreFeed![0..<limit], id: \.id) { genre in
+                if feedState.moviesByGenre.count > 0 {
+                    let limit = !seeMore ? 3 : feedState.moviesByGenre.count
+                    //                    ForEach(Array(feedState.moviesByGenre.keys)[0..<limit], id: \.self) { genre in
+                    ForEach(Array(feedState.moviesByGenre.keys).prefix(limit), id: \.self) { genre in
                         LazyVStack {
-                            Text(genre.name)
+                            Text(genre)
                                 .frame(maxWidth: .infinity, alignment: .leading).padding(.horizontal, 20)
                             ScrollView(.horizontal) {
-                                HStack {
-                                    ForEach(movies, id: \.id) { movie in
+                                LazyHStack {
+                                    ForEach(feedState.moviesByGenre[genre]!, id: \.self) { movie in
                                         VStack {
                                             AsyncImage(url: TMDBService().getImageUrl(path: movie.backdropPath?.absoluteString ?? "")) { image in
                                                 image
@@ -83,12 +83,8 @@ struct HomepageView: View {
                                                 .fixedSize(horizontal: true, vertical: false)
                                         }
                                     }
-                                }.padding(.bottom)
-                                    .onAppear() {
-                                        Task {
-                                            movies = await feedState.fetchByGenre(genres: String(genre.id)) ?? []
-                                        }
-                                    }
+                                }
+                                .padding(.bottom)
                             }
                         }.contentMargins(.leading, 20)
                     }
@@ -103,11 +99,11 @@ struct HomepageView: View {
         }
         .onAppear() {
             Task {
-                await feedState.fetchHomeFeed()
                 await feedState.fetchGenreFeed()
+                await feedState.fetchHomeFeed()
             }
         }.sheet(item: self.$selectedMovie) {selectedMovie in
-            DetailSheetView(movie: selectedMovie)
+            DetailSheetView(movie: selectedMovie, genreFeed: $feedState.genreFeed)
         }
     }
 }

@@ -12,6 +12,7 @@ struct MovieCardCarousel: View {
     @State private var currentIndex = 0
     @StateObject private var motion = MotionManager()
     @StateObject var feedState = FeedState()
+    @Binding var selectedMovie: Movie?
     
     var cards: [MovieCard]
     var height: CGFloat
@@ -22,7 +23,7 @@ struct MovieCardCarousel: View {
             TabView(selection: $currentIndex) {
                 ForEach(Array(cards.enumerated()), id: \.element) { index, card in
                     //  @TODO: Complete with proper data and actions
-                        AsyncImage(url: TMDBService().getImageUrl(path: card.movie.posterPath?.absoluteString ?? "")) { image in
+                    AsyncImage(url: TMDBService().getImageUrl(path: card.movie.posterPath?.absoluteString ?? "")) { image in
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fill)
@@ -34,6 +35,9 @@ struct MovieCardCarousel: View {
                     }
                     .frame(maxWidth: width, maxHeight: height)
                     .tag(index)
+                    .onTapGesture {
+                        self.selectedMovie = card.movie
+                    }
                 }
             }.tabViewStyle(PageTabViewStyle())
                 .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))

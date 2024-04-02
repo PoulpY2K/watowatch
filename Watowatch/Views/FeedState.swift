@@ -7,9 +7,11 @@
 
 import Foundation
 
+@MainActor
 class FeedState: ObservableObject {
     @Published var homeFeed: [Movie]?
     @Published var genreFeed: [Genre]?
+    @Published var moviesByGenre = [String: [Movie]]()
     
     func fetchHomeFeed() async {
         do {
@@ -24,7 +26,9 @@ class FeedState: ObservableObject {
                 let deserializedData = try JSONDecoder().decode(MoviePageableList.self, from: data).results
                 
                 // Mettez à jour l'état de la vue
-                homeFeed = deserializedData
+                await MainActor.run {
+                    homeFeed = deserializedData
+                }
             }
         } catch {
             print("Error: \(error)")
@@ -38,6 +42,13 @@ class FeedState: ObservableObject {
                 let (data, _) = try await URLSession.shared.data(for: request)
                 let deserializedData = try JSONDecoder().decode(GenreListResult.self, from: data).genres
                 genreFeed = deserializedData
+                
+                if let genres = genreFeed {
+                    for genre in genres {
+                        let movies = await self.fetchByGenre(genres: String(genre.id)) ?? []
+                        moviesByGenre[genre.name] = movies
+                    }
+                }
             }
         } catch {
             print("Error: \(error)")
@@ -47,7 +58,6 @@ class FeedState: ObservableObject {
     
     func fetchByGenre(genres: String = "") async -> [Movie]? {
         do {
-            print(genres)
             // Créez une requête avec cette URL
             if let url = TMDBService().feedDiscoverUrl(withGenresId: genres, includeAdult: "true", includeVideo: "true") {
                 let request = URLRequest(url: url)

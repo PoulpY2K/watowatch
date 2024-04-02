@@ -14,6 +14,8 @@ struct ListView: View {
     @Environment(\.modelContext) private var modelContext
     @Query var movieList: [Movie]
     @State var chartMovies = [String : Int]()
+    @State var selectedMovieInList: Movie? = nil
+    @EnvironmentObject var feedState: FeedState
     
     // MARK: - BODY
     var body: some View {
@@ -31,16 +33,16 @@ struct ListView: View {
                     .padding()
                 
                 List(movieList) { movie in
-                    NavigationLink {
-                        DetailSheetView(movie: movie)
-                    } label: {
-                        VStack {
-                            Text(movie.title)
-                            if(movie.originalTitle != nil) {
-                                Text(movie.originalTitle!).font(.footnote)
-                            }
+                    VStack {
+                        Text(movie.title)
+                        if(movie.originalTitle != nil) {
+                            Text(movie.originalTitle!).font(.footnote)
                         }
+                    }.onTapGesture {
+                        self.selectedMovieInList = movie
                     }
+                }.sheet(item: self.$selectedMovieInList) {selectedMovieInList in
+                    DetailSheetView(movie: selectedMovieInList, genreFeed: $feedState.genreFeed)
                 }
             } else {
                 Text("Aucun film n'a été ajouté.")

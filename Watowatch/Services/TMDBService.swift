@@ -14,7 +14,7 @@ class TMDBService {
     let imageHost: String = "image.tmdb.org"
     let apiKeyQueryParam: String = "api_key"
     
-    let imagePath: String = "/t/p/original"
+    let imagePath: String = "/t/p/w780"
     let moviePath: String = "/3/movie"
     let genrePath: String = "/3/genre"
     let discoverPath: String = "/3/discover"

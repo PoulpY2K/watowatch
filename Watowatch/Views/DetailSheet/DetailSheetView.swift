@@ -17,6 +17,7 @@ struct DetailSheetView: View {
     
     @State private var showingValidAlert = false
     @State private var showingErrorAlert = false
+    @Binding var genreFeed: [Genre]?
     
     let screenSize: CGRect = UIScreen.main.bounds
     
@@ -86,7 +87,7 @@ struct DetailSheetView: View {
             VStack(spacing: screenSize.width/25, content: {
                 
                 /// VStack du titre du film
-                VStack(spacing: screenSize.width/90, content: {
+                VStack(alignment: .center, spacing: screenSize.width/90, content: {
                     Text(movie.title)
                         .font(.title)
                         .fontWeight(.heavy)
@@ -98,34 +99,36 @@ struct DetailSheetView: View {
                     }
                 })
                 
-//                if(movie.genres != nil && !movie.genres!.isEmpty) {
-//                    HStack(alignment: .center, spacing: screenSize.width/15, content: {
-//                        
-//                        let nbOfGenre: Int = movie.genres!.count >= 3 ? 3 : movie.genres!.count
-//                        
-//                        ForEach(0...nbOfGenre-1, id: \.self) {
-//                            Text(movie.genres![$0].name)
-//                                .font(.footnote)
-//                                .fontWeight(.bold)
-//                                .foregroundColor(Color.white)
-//                                .padding(
-//                                    EdgeInsets(
-//                                        top: 5,
-//                                        leading: 10,
-//                                        bottom: 5,
-//                                        trailing: 10) )
-//                                .background(
-//                                    Color(
-//                                        red: .random(in: 0...0.5),
-//                                        green: .random(in: 0...0.5),
-//                                        blue: .random(in: 0...0.5)
-//                                    )
-//                                )
-//                                .cornerRadius(60)
-//                            
-//                        }
-//                    })
-//                }
+                if(movie.genreIds != nil && !movie.genreIds!.isEmpty) {
+                    HStack(alignment: .center, spacing: screenSize.width/15, content: {
+                        
+                        let nbOfGenre: Int = movie.genreIds!.count >= 3 ? 3 : movie.genreIds!.count
+                        
+                        ForEach(0...nbOfGenre-1, id: \.self) {genreIndex in
+                            if genreFeed != nil {
+                                let genreId = movie.genreIds![genreIndex]
+                                Text(genreFeed!.first(where: {$0.id == genreId})!.name)
+                                    .font(.footnote)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(Color.white)
+                                    .padding(
+                                        EdgeInsets(
+                                            top: 5,
+                                            leading: 10,
+                                            bottom: 5,
+                                            trailing: 10) )
+                                    .background(
+                                        Color(
+                                            red: .random(in: 0...0.5),
+                                            green: .random(in: 0...0.5),
+                                            blue: .random(in: 0...0.5)
+                                        )
+                                    )
+                                    .cornerRadius(60)
+                            }
+                        }
+                    })
+                }
                 
                 /// HStack qui affiche la date de sortie et la durée du film
                 HStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: screenSize.width/20, content: {

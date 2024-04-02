@@ -29,9 +29,7 @@ struct MovieCardCarousel: View {
                             .aspectRatio(contentMode: .fill)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                     } placeholder: {
-                        RoundedRectangle(cornerRadius: 20)
-                            .fill(.gray)
-                            .frame(width: width, height: height)
+                        ProgressView().tint(.white).scaleEffect(1.5, anchor: .center).frame(width: width, height: height).background(.gray).clipShape(RoundedRectangle(cornerRadius: 20))
                     }
                     .frame(maxWidth: width, maxHeight: height)
                     .tag(index)

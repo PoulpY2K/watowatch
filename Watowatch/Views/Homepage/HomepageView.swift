@@ -24,15 +24,11 @@ struct HomepageView: View {
                         .foregroundColor(.black)
                 }
                 Spacer()
-                Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                    Image(systemName: "magnifyingglass.circle")
-                        .imageScale(.large)
-                        .foregroundColor(.black)
-                })
+
             }.padding(.bottom).padding(.horizontal, 20)
             
             ScrollView {
-                Text("Bonjour,")
+                Text("Bonjour, cinéphile !")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.bottom, 20).padding(.horizontal, 20)
                 
@@ -42,13 +38,10 @@ struct HomepageView: View {
                         cards: feedState.homeFeed![0..<3].map {MovieCard(movie: $0)},
                         height: carouselHeight,
                         width: 250
-                    ).frame(width: 400, height: carouselHeight)
+                    ).frame(width: 350, height: carouselHeight)
                         .padding(.bottom, 20)
                 } else {
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(.gray)
-                        .frame(width: 350, height: carouselHeight)
-                        .padding(.bottom, 20)
+                    ProgressView().tint(.white).scaleEffect(1.5, anchor: .center).frame(width: 250, height: carouselHeight).background(.gray).clipShape(RoundedRectangle(cornerRadius: 20)).padding(.bottom, 20)
                 }
                 
                 if feedState.moviesByGenre.count > 0 {
@@ -69,9 +62,7 @@ struct HomepageView: View {
                                                     .frame(width: 100, height: 100)
                                                     .clipShape(RoundedRectangle(cornerRadius: 10))
                                             } placeholder: {
-                                                RoundedRectangle(cornerRadius: 10)
-                                                    .fill(.gray)
-                                                    .frame(width: 100, height: 100)
+                                                ProgressView().tint(.white).scaleEffect(1.5, anchor: .center).frame(width: 100, height: 100).background(.gray).clipShape(RoundedRectangle(cornerRadius: 10))
                                             }.onTapGesture {
                                                 self.selectedMovie = movie
                                             }

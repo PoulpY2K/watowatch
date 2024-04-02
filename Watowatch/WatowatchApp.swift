@@ -11,14 +11,16 @@ import SwiftData
 @main
 struct WatowatchApp: App {
     @AppStorage("isOnboarding") var isOnboarding: Bool = true
-        
+    
     var body: some Scene {
         WindowGroup {
             if isOnboarding {
                 OnboardingView()
             } else {
-                HomepageView()
+                NavigationStack {
+                    HomepageView()
+                }
             }
-        }.modelContainer(for: UserList.self)
+        }.modelContainer(for: Movie.self)
     }
 }

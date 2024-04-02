@@ -52,12 +52,10 @@ struct DetailSheetView: View {
                     return
                 }
             }
-            
-            modelContext.insert(movie)
-            showingValidAlert = true
         }
         
-        
+        modelContext.insert(movie)
+        showingValidAlert = true
     }
     
     // MARK: - BODY
@@ -67,7 +65,7 @@ struct DetailSheetView: View {
                 VStack(content: {
                     /// Pendant que l'image charge, on remplace par un spinner et un fond gris
                     AsyncImage(url: TMDBService().getImageUrl(path: movie.backdropPath?.absoluteString ?? "")) {
-                        image in image.resizable().aspectRatio(contentMode: .fill).frame(width: screenSize.width, height: screenSize.height/3).ignoresSafeArea().cornerRadius(12)
+                        image in image.resizable().aspectRatio(contentMode: .fill).frame(width: screenSize.width, height: screenSize.height/3).ignoresSafeArea().cornerRadius(10)
                     } placeholder: {
                         ProgressView().tint(.white).scaleEffect(1.5, anchor: .center).frame(width: screenSize.width, height: screenSize.height/3).ignoresSafeArea().background(.gray)
                     }
@@ -78,11 +76,11 @@ struct DetailSheetView: View {
                     /// Pendant que l'image charge, on remplace par un spinner et un fond gris
                     AsyncImage(url: TMDBService().getImageUrl(path: movie.posterPath?.absoluteString ?? "")){
                         image in
-                        image.resizable().aspectRatio(contentMode: .fit).frame(width: screenSize.width/3, height: screenSize.height/4).cornerRadius(10)
+                        image.resizable().aspectRatio(contentMode: .fit).frame(width: screenSize.width/3, height: screenSize.height/4).clipShape(RoundedRectangle(cornerRadius: 10))
                     } placeholder: {
-                        ProgressView().tint(.black).scaleEffect(1.5, anchor: .center).frame(width: screenSize.width/3, height: screenSize.height/4).cornerRadius(10).ignoresSafeArea().background(.gray)
-                    }
-                }).frame(minWidth:0, maxWidth: screenSize.width, minHeight: 0, maxHeight: screenSize.height/2.2, alignment: .bottom)
+                        ProgressView().tint(.black).scaleEffect(1.5, anchor: .center).frame(width: screenSize.width/3, height: screenSize.height/4).ignoresSafeArea().background(.gray)
+                    }.clipShape(RoundedRectangle(cornerRadius: 10))
+                }).frame(minWidth:0, maxWidth: screenSize.width, minHeight: 0, maxHeight: screenSize.height/2.2, alignment: .bottom).clipShape(RoundedRectangle(cornerRadius: 10))
             })
             
             VStack(spacing: screenSize.width/25, content: {

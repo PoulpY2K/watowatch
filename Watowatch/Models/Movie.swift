@@ -53,7 +53,13 @@ final public class Movie: Identifiable, Codable, Equatable, Hashable {
     ///
     /// Movie genres.
     ///
+    @Relationship(deleteRule: .noAction)
     public var genres: [Genre]?
+    
+    ///
+    /// Movie genres ids
+    ///
+    public var genreIds: [Int]?
     
     ///
     /// Movie release date.
@@ -131,6 +137,7 @@ final public class Movie: Identifiable, Codable, Equatable, Hashable {
     ///    - overview: Movie overview.
     ///    - runtime: Movie runtime, in minutes.
     ///    - genres: Movie genres.
+    ///    - genreIds: Movie genres ids
     ///    - releaseDate: Movie release date.
     ///    - posterPath: Movie poster path.
     ///    - backdropPath: Movie poster backdrop path.
@@ -154,6 +161,7 @@ final public class Movie: Identifiable, Codable, Equatable, Hashable {
         overview: String? = nil,
         runtime: Int? = nil,
         genres: [Genre]? = nil,
+        genreIds: [Int]? = nil,
         releaseDate: String? = nil,
         posterPath: URL? = nil,
         backdropPath: URL? = nil,
@@ -175,6 +183,7 @@ final public class Movie: Identifiable, Codable, Equatable, Hashable {
         self.overview = overview
         self.runtime = runtime
         self.genres = genres
+        self.genreIds = genreIds
         self.releaseDate = releaseDate
         self.posterPath = posterPath
         self.backdropPath = backdropPath
@@ -197,7 +206,8 @@ final public class Movie: Identifiable, Codable, Equatable, Hashable {
         case originalLanguage
         case overview
         case runtime
-        case genres
+        case genres = "genres"
+        case genreIds = "genre_ids"
         case releaseDate = "release_date"
         case posterPath = "poster_path"
         case backdropPath = "backdrop_path"
@@ -223,7 +233,23 @@ final public class Movie: Identifiable, Codable, Equatable, Hashable {
         self.originalLanguage = try container.decodeIfPresent(String.self, forKey: .originalLanguage)
         self.overview = try container.decodeIfPresent(String.self, forKey: .overview)
         self.runtime = try container.decodeIfPresent(Int.self, forKey: .runtime)
-        self.genres = try container.decodeIfPresent([Genre].self, forKey: .genres)
+        let genresArray = try container.decodeIfPresent([Genre].self, forKey: .genres)
+        self.genres = try {
+            guard let genresArray, !genresArray.isEmpty else {
+                return []
+            }
+            
+            return try container2.decodeIfPresent([Genre].self, forKey: .genres)
+        }()
+        
+        let genresIdsArray = try container.decodeIfPresent([Int].self, forKey: .genreIds)
+        self.genreIds = try {
+            guard let genresIdsArray, !genresIdsArray.isEmpty else {
+                return []
+            }
+            
+            return try container2.decodeIfPresent([Int].self, forKey: .genreIds)
+        }()
         
         // Need to deal with empty strings - date decoding will fail with an empty string
         let releaseDateString = try container.decodeIfPresent(String.self, forKey: .releaseDate)
@@ -269,6 +295,7 @@ final public class Movie: Identifiable, Codable, Equatable, Hashable {
         try container.encode(overview, forKey: .overview)
         try container.encode(runtime, forKey: .runtime)
         try container.encode(genres, forKey: .genres)
+        try container.encode(genreIds, forKey: .genreIds)
         try container.encode(releaseDate, forKey: .releaseDate)
         try container.encode(posterPath, forKey: .posterPath)
         try container.encode(backdropPath, forKey: .backdropPath)

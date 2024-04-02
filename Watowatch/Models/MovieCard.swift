@@ -7,8 +7,7 @@
 
 import SwiftUI
 
-struct MovieCard {
+struct MovieCard: Hashable {
     let id = UUID()
-    // @TODO: fill with proper data
     let movie : Movie
 }

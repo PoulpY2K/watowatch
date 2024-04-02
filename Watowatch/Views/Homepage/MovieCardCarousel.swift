@@ -19,32 +19,31 @@ struct MovieCardCarousel: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            
             TabView(selection: $currentIndex) {
-                ForEach(0..<cards.count, id: \.self) { cardIndex in
-                    let card = cards[cardIndex]
+                ForEach(Array(cards.enumerated()), id: \.element) { index, card in
                     //  @TODO: Complete with proper data and actions
-                    AsyncImage(url: URL(string: feedState.imageBaseUrl + (card.movie.posterPath?.absoluteString ?? ""))) { image in
+                        AsyncImage(url: TMDBService().getImageUrl(path: card.movie.posterPath?.absoluteString ?? "")) { image in
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fill)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
                     } placeholder: {
                         RoundedRectangle(cornerRadius: 20)
                             .fill(.gray)
                             .frame(width: width, height: height)
                     }
                     .frame(maxWidth: width, maxHeight: height)
-                    .tag(cardIndex)
+                    .tag(index)
                 }
             }.tabViewStyle(PageTabViewStyle())
                 .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
         }
         .frame(maxWidth: .infinity)
         .rotation3DEffect(
-            Angle(degrees: motion.y * 10), axis: /*@START_MENU_TOKEN@*/(x: 0.0, y: 1.0, z: 0.0)/*@END_MENU_TOKEN@*/
+            Angle(degrees: motion.y * 15), axis: (x: 1.0, y: 0.0, z: 0.0)
         )
         .rotation3DEffect(
-            Angle(degrees: motion.x * 10), axis: (x: 1.0, y: 0.0, z: 0.0)
+            Angle(degrees: motion.x * 15), axis: (x: 0.0, y: 1.0, z: 0.0)
         )
     }
 }

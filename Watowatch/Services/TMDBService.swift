@@ -54,7 +54,7 @@ class TMDBService {
         if withGenresId != nil {
             components.queryItems! += [URLQueryItem(name: "with_genres", value: withGenresId ?? "")]
         }
-        
+                
         return components.url
     }
     
@@ -68,6 +68,7 @@ class TMDBService {
         var components = tmdbApiBaseUrl()
         components.path += "\(genrePath)/movie/list"
         components.queryItems! += [URLQueryItem(name: "language", value: language)]
+        
         return components.url
     }
 }
